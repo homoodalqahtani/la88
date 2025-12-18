@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+
+    <style>
+        :root {
+            --blue-dark: #0b1c2d;
+            --yellow-dark: #d4a100;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .top-bar {
+            background-color: var(--blue-dark);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--yellow-dark);
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--yellow-dark);
+        }
+
+        .header-actions button {
+            background-color: var(--yellow-dark);
+            border: none;
+            padding: 8px 14px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .header-actions button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="top-bar">
+    <div class="logo">MEN STYLE</div>
+
+    <nav class="nav-links">
+        <a href="/">الرئيسية</a>
+        <a href="#">الملابس</a>
+        <a href="#">العروض</a>
+        <a href="#">تواصل معنا</a>
+    </nav>
+
+    <div class="header-actions">
+        <button onclick="alert('سلة التسوق')">🛒</button>
+        <button onclick="alert('تسجيل الدخول')">دخول</button>
+    </div>
+</header>
+
+</body>
+</html>
