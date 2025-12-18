@@ -43,18 +43,37 @@
             color: var(--yellow-dark);
         }
 
-        .header-actions button {
-            background-color: var(--yellow-dark);
-            border: none;
-            padding: 8px 14px;
-            margin-right: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 4px;
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .header-actions button:hover {
+        .header-actions a,
+        .user-name {
+            background-color: var(--yellow-dark);
+            color: var(--blue-dark);
+            text-decoration: none;
+            padding: 8px 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .header-actions a:hover {
             opacity: 0.85;
+        }
+
+        .cart-btn {
+            font-size: 18px;
+            padding: 8px 12px;
+        }
+
+        .user-name {
+            background-color: transparent;
+            color: white;
+            font-weight: normal;
         }
     </style>
 </head>
@@ -62,8 +81,10 @@
 <body>
 
 <header class="top-bar">
+    <!-- Logo -->
     <div class="logo">MEN STYLE</div>
 
+    <!-- Navigation -->
     <nav class="nav-links">
         <a href="/">الرئيسية</a>
         <a href="#">الملابس</a>
@@ -71,9 +92,25 @@
         <a href="#">تواصل معنا</a>
     </nav>
 
+    <!-- Actions -->
     <div class="header-actions">
-        <button onclick="alert('سلة التسوق')">🛒</button>
-        <button onclick="alert('تسجيل الدخول')">دخول</button>
+        <a href="#" class="cart-btn">🛒</a>
+
+        {% if request.user.is_authenticated %}
+            <!-- اسم المستخدم -->
+            <span class="user-name">
+                مرحبًا، {{ request.user.username }}
+            </span>
+
+            <!-- تسجيل الخروج -->
+            <a href="{% url 'accounts:logout' %}">تسجيل الخروج</a>
+        {% else %}
+            <!-- تسجيل الدخول -->
+            <a href="{% url 'accounts:login' %}">تسجيل الدخول</a>
+
+            <!-- إنشاء حساب -->
+            <a href="{% url 'accounts:register' %}">إنشاء حساب</a>
+        {% endif %}
     </div>
 </header>
 
