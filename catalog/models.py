@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -49,7 +50,13 @@ class ProductImage(models.Model):
         related_name="images",
         verbose_name=_("المنتج"),
     )
-    image = models.ImageField(_("الصورة"), upload_to="products/")
+
+    # ✅ Cloudinary فقط – بدون ImageField
+    image = CloudinaryField(
+        verbose_name=_("الصورة"),
+        folder="products",
+    )
+
     is_main = models.BooleanField(_("صورة رئيسية"), default=False)
 
     class Meta:
